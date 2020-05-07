@@ -1,0 +1,244 @@
+
+#Base URL http://localhost:8080/
+
+Entities
+Item :: define the product details
+Order : define the Order details
+Items : define the items which are ordered
+========================================================
+			Item API's
+========================================================
+1 -> Get All Items
+Http Method : GET
+endPoint : http://localhost:8080/items
+Response Status : 200(OK)
+Response : List the all items
+[
+    {
+        "id": 10001,
+        "name": "Java-8 Book",
+        "descritpion": "Java Book",
+        "itemType": "Books",
+        "itemCategory": "Books",
+        "amount": 300
+    },
+    {
+        "id": 10002,
+        "name": "MicroService Book",
+        "descritpion": "MicroService Book",
+        "itemType": "Books",
+        "itemCategory": "Books",
+        "amount": 500
+    }
+]
+========================================================
+2-> Get Item by Id
+Http Method : GET
+endPoint : http://localhost:8080/items/{id}
+Response Status : 200(OK)
+Response : return the specific item
+{
+    "id": 10001,
+    "name": "Java-8 Book",
+    "descritpion": "Java Book",
+    "itemType": "Books",
+    "itemCategory": "Books",
+    "amount": 300
+}
+
+========================================================
+3 -> Delete Item by id
+HttpMethod : DELETE
+endPoint : http://localhost:8080/items/{id}
+Response Status : 202(ACCEPTED)
+=============================================================
+4-> Post Item
+Http Method : POST
+endPoint : http://localhost:8080/items
+RequestBody :
+	{
+        "name": "order-30001",
+        "orderDate": "2020-05-06T00:00:00.000+0000",
+        "status": "Shipped",
+        "items": [
+        	{
+                "id": 2002,
+                "productId": {
+                    "id": 10002
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            },
+            {
+                "id": 2001,
+                "productId": {
+                    "id": 10001
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            },
+            {
+                "id": 2001,
+                "productId": {
+                    "id": 10003
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            }
+        	]
+    }
+    
+ Response Status : 201(CREATED)
+=============================================================
+				Order API's
+=============================================================
+1 -> Get All Orders
+Http Method : GET
+endPoint : http://localhost:8080/orders
+Response Status : 200(OK)
+Response : List the all items
+[
+    {
+        "id": 3001,
+        "name": "order-1001",
+        "orderDate": "2020-05-07T00:00:00.000+0000",
+        "status": "Ordered",
+        "items": [
+            {
+                "id": 2002,
+                "productId": {
+                    "id": 10002,
+                    "name": "MicroService Book",
+                    "descritpion": "MicroService Book",
+                    "itemType": "Books",
+                    "itemCategory": "Books",
+                    "amount": 500
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            },
+            {
+                "id": 2001,
+                "productId": {
+                    "id": 10001,
+                    "name": "Java-8 Book",
+                    "descritpion": "Java Book",
+                    "itemType": "Books",
+                    "itemCategory": "Books",
+                    "amount": 300
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            }
+        ]
+    },
+    {
+        "id": 3002,
+        "name": "order-1002",
+        "orderDate": "2020-05-07T00:00:00.000+0000",
+        "status": "Ordered",
+        "items": []
+    }
+]
+========================================================
+2-> Get Item by Id
+Http Method : GET
+endPoint : http://localhost:8080/orders/{id}
+Response Status : 200(OK)
+Response : return the specific item
+{
+    "id": 3001,
+    "name": "order-1001",
+    "orderDate": "2020-05-07T00:00:00.000+0000",
+    "status": "Ordered",
+    "items": [
+        {
+            "id": 2002,
+            "productId": {
+                "id": 10002,
+                "name": "MicroService Book",
+                "descritpion": "MicroService Book",
+                "itemType": "Books",
+                "itemCategory": "Books",
+                "amount": 500
+            },
+            "itemTotal": 1,
+            "quantity": 4
+        },
+        {
+            "id": 2001,
+            "productId": {
+                "id": 10001,
+                "name": "Java-8 Book",
+                "descritpion": "Java Book",
+                "itemType": "Books",
+                "itemCategory": "Books",
+                "amount": 300
+            },
+            "itemTotal": 1,
+            "quantity": 4
+        }
+    ]
+}
+
+========================================================
+3 -> Delete Order by id
+HttpMethod : DELETE
+endPoint : http://localhost:8080/orders/{id}
+Response Status : 202(ACCEPTED)
+=============================================================
+4-> Post Order
+Http Method : POST
+endPoint : http://localhost:8080/orders
+RequestBody :
+	{
+        "orderDate": "2020-05-06T00:00:00.000+0000",
+        "status": "Shipped",
+        "name": "order-30001",
+        "items": [
+        	{
+                "id": 2002,
+                "productId": {
+                    "id": 10002,
+                    "name": "MicroService Book",
+                    "descritpion": "MicroService Book",
+                    "itemType": "Books",
+                    "itemCategory": "Books",
+                    "amount": 500
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            },
+            {
+                "id": 2001,
+                "productId": {
+                    "id": 10001,
+                    "name": "Java-8 Book",
+                    "descritpion": "Java Book",
+                    "itemType": "Books",
+                    "itemCategory": "Books",
+                    "amount": 300
+                },
+                "itemTotal": 1,
+                "quantity": 4
+            }
+        	]
+    }
+    
+ Response Status : 201(CREATED)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
